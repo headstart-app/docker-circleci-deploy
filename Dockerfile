@@ -14,11 +14,13 @@ RUN apk add --no-cache --update grep make git curl wget util-linux zip bash busy
     # Docker client
     pip3 install --no-cache-dir docker-compose==1.25.0 && \
 
-    # Terraform
+    # Terraform 11
     curl -L https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip -o terraform11.zip && \
     unzip terraform11.zip -d /tmp && \
     mv /tmp/terraform /usr/local/bin/terraform11 && \
     rm -rf terraform11.zip && \
+
+    # Terraform 12
     curl -L https://releases.hashicorp.com/terraform/0.12.18/terraform_0.12.18_linux_amd64.zip -o terraform12.zip && \
     unzip terraform12.zip -d /tmp && \
     mv /tmp/terraform /usr/local/bin/terraform12 && \
