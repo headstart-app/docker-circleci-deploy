@@ -10,6 +10,6 @@ jobs:
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker build -t aadamovich/circleci-deployer:$TAG .
           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-          docker tag aadamovich/circleci-demo-docker:latest
+          docker tag aadamovich/circleci-demo-docker:$TAG aadamovich/circleci-demo-docker:latest
           docker push aadamovich/circleci-demo-docker:$TAG
           docker push aadamovich/circleci-demo-docker:latest
