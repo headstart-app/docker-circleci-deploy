@@ -1,0 +1,13 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.13-alpine
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: |
+          TAG=0.1.$CIRCLE_BUILD_NUM
+          docker build -t aadamovich/circleci-deployer:$TAG .
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker push aadamovich/circleci-demo-docker:$TAG
