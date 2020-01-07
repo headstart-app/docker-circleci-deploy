@@ -37,7 +37,8 @@ jobs:
       - run:
           name: Login to Docker registry
           command: |
-            sh -c "$(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email)"
+            LOGIN_COMMAND=$(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email)
+            $LOGIN_COMMAND
       - run:
           name: Push Docker image 
           command: |            
