@@ -16,6 +16,10 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          name: Install AWS CLI
+          command: |
+            pip install awscli 
+      - run:
           name: Set environment variables
           command: |
             echo 'export TAG=0.1.$CIRCLE_BUILD_NUM' >> $BASH_ENV
@@ -33,7 +37,6 @@ jobs:
       - run:
           name: Login to Docker registry
           command: |
-            pip install awscli 
             sh -c "$(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email)"
       - run:
           name: Push Docker image 
