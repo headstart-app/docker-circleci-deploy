@@ -3,8 +3,8 @@ version: 2.1
 parameters:
   build_image:
     type: string
-    default: "circleci/golang:1.13.1-stretch" 
-
+    default: "infrastructureascode/aws-cli:1.16.311" 
+ 
 jobs:
 
   build:
