@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   build_image:
     type: string
-    default: "infrastructureascode/aws-cli:1.16.311" 
+    default: "circleci/python:3.8" 
  
 jobs:
 
@@ -30,6 +30,7 @@ jobs:
       - run:
           name: Login to Docker registry
           command: |
+            pip install aws-cli 
             sh -c "$(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email)"
       - run:
           name: Push Docker image 
