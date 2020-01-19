@@ -9,6 +9,10 @@ RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash b
     ln -sf python3 python && \
     ln -sf pip3 pip && \
 
+    # Docker
+    apk add --no-cache --update docker && \
+    pip3 install --no-cache-dir docker-compose==1.25.0 && \
+
     # AWS CLI
     pip3 install --no-cache-dir awscli && \
     # Docker client
