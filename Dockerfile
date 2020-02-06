@@ -25,7 +25,7 @@ RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash b
     rm -rf terraform11.zip && \
 
     # TFLint 0.7.6
-    curl -v https://github.com/terraform-linters/tflint/releases/download/v0.7.6/tflint_linux_amd64.zip -o tflint7.zip && \
+    curl -L https://github.com/terraform-linters/tflint/releases/download/v0.7.6/tflint_linux_amd64.zip -o tflint7.zip && \
     unzip tflint7.zip -d /tmp && \
     mv /tmp/tflint /usr/local/bin/tflint7 && \
     rm -rf tflint7.zip && \
@@ -37,7 +37,7 @@ RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash b
     rm -rf terraform12.zip && \
 
     # TFLint 0.14
-    curl -v https://github.com/terraform-linters/tflint/releases/download/v0.14.0/tflint_linux_amd64.zip -o tflint14.zip && \
+    curl -L https://github.com/terraform-linters/tflint/releases/download/v0.14.0/tflint_linux_amd64.zip -o tflint14.zip && \
     unzip tflint14.zip -d /tmp && \
     mv /tmp/tflint /usr/local/bin/tflint14 && \
     rm -rf tflint14.zip && \
