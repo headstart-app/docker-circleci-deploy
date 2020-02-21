@@ -16,6 +16,9 @@ jobs:
       DOCKER_IMAGE: "circleci-deploy"
     docker:  
       - image: << pipeline.parameters.build_image >>
+        aws_auth:
+          aws_access_key_id: $ECR_AWS_ACCESS_KEY_ID
+          aws_secret_access_key: $ECR_AWS_SECRET_ACCESS_KEY
     steps:
       - checkout
       - setup_remote_docker
