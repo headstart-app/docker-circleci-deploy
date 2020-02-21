@@ -4,6 +4,10 @@ parameters:
   build_image:
     type: string
     default: "circleci/python:3.8" 
+
+  aws_prefix:
+    type: string
+    default: "ECR_"
  
 jobs:
 
@@ -23,13 +27,17 @@ jobs:
       - run:
           name: Set environment variables
           command: |
+            echo 'export AWS_ACCESS_KEY_ID="${<< pipeline.parameters.aws_prefix >>AWS_ACCESS_KEY}"' >> $BASH_ENV
+            echo 'if [ -z "$AWS_ACCESS_KEY_ID" ]; then export AWS_ACCESS_KEY_ID="${<< pipeline.parameters.aws_prefix >>AWS_ACCESS_KEY_ID}"; fi' >> $BASH_ENV
+            echo 'export AWS_SECRET_ACCESS_KEY="${<< pipeline.parameters.aws_prefix >>AWS_SECRET_ACCESS_KEY}"' >> $BASH_ENV
+            echo 'if [ -z "$AWS_SECRET_ACCESS_KEY" ]; then export AWS_SECRET_ACCESS_KEY="${<< pipeline.parameters.aws_prefix >>AWS_SECRET_KEY}"; fi' >> $BASH_ENV
             echo 'export TAG=0.1.$CIRCLE_BUILD_NUM' >> $BASH_ENV
-            echo 'export DOCKER_REGISTRY=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com' >> $BASH_ENV
+            echo 'export DOCKER_REGISTRY=$<< pipeline.parameters.aws_prefix >>AWS_ACCOUNT_ID.dkr.ecr.$<< pipeline.parameters.aws_prefix >>AWS_DEFAULT_REGION.amazonaws.com' >> $BASH_ENV
             source $BASH_ENV
       - run:
           name: Login to Docker registry
           command: |
-            LOGIN_COMMAND=$(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            LOGIN_COMMAND=$(aws ecr get-login --region $ECR_AWS_DEFAULT_REGION --no-include-email)
             $LOGIN_COMMAND
       - run:
           name: Build Docker image 
