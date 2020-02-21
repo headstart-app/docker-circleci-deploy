@@ -37,7 +37,7 @@ jobs:
       - run:
           name: Login to Docker registry
           command: |
-            LOGIN_COMMAND=$(aws ecr get-login --region $ECR_DEFAULT_REGION --no-include-email)
+            LOGIN_COMMAND=$(aws ecr get-login --region $ECR_AWS_REGION --no-include-email)
             $LOGIN_COMMAND
       - run:
           name: Build Docker image 
