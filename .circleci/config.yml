@@ -34,13 +34,10 @@ jobs:
             echo 'export TAG=0.1.$CIRCLE_BUILD_NUM' >> $BASH_ENV
             echo 'export DOCKER_REGISTRY=$<< pipeline.parameters.aws_prefix >>AWS_ACCOUNT_ID.dkr.ecr.$<< pipeline.parameters.aws_prefix >>AWS_DEFAULT_REGION.amazonaws.com' >> $BASH_ENV
             source $BASH_ENV
-
-            echo $AWS_ACCESS_KEY_ID
-            echo $AWS_ACCESS_SECRET_KEY
       - run:
           name: Login to Docker registry
           command: |
-            LOGIN_COMMAND=$(aws ecr get-login --region $ECR_AWS_DEFAULT_REGION --no-include-email)
+            LOGIN_COMMAND=$(aws ecr get-login --region $ECR_DEFAULT_REGION --no-include-email)
             $LOGIN_COMMAND
       - run:
           name: Build Docker image 
