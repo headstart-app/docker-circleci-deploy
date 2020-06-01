@@ -12,9 +12,6 @@ parameters:
 jobs:
 
   build:
-    branches:
-      only:
-        - master
     environment:
       DOCKER_IMAGE: "circleci-deploy"
     docker:  
@@ -56,3 +53,11 @@ jobs:
           command: |            
             docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:$TAG
             docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:latest
+
+workflows:
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
