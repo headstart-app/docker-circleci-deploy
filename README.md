@@ -5,7 +5,7 @@ Docker images with tools to support CircleCI builds.
 
 Includes:
 
- - Node 8
+ - Node 10
  - AWS CLI
  - Transcrypt
  - Terraform
