@@ -1,4 +1,4 @@
-FROM node:12.17.0-alpine3.11
+FROM node:12.20.0-alpine3.11
 
 RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash busybox busybox-extras util-linux openssl openssh socat groff less g++ libffi-dev openssl-dev libxml2-dev libxslt-dev ca-certificates && \
 
