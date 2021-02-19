@@ -1,11 +1,9 @@
 FROM node:12.20.0-alpine3.12
 
-# Install python first otherwise other installations can fail
-RUN apk add --no-cache --update py-pip python3 python3-dev  && \
-
-    apk add --no-cache --update grep make git curl jq wget util-linux zip bash busybox busybox-extras util-linux openssl openssh socat groff less g++ libffi-dev openssl-dev libxml2-dev libxslt-dev ca-certificates && \
+RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash busybox busybox-extras util-linux openssl openssh socat groff less g++ libffi-dev openssl-dev libxml2-dev libxslt-dev ca-certificates && \
 
     # Python
+    apk add --no-cache --update py-pip python3 python3-dev  && \
     pip3 install --no-cache-dir --upgrade pip setuptools && \
     pip3 install --no-cache-dir httpie && \
     ln -sf python3 python && \
