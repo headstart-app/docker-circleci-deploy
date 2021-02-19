@@ -31,7 +31,7 @@ RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash b
     rm -rf tflint7.zip && \
 
     # Terraform 12
-    curl -L https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip -o terraform12.zip && \
+    curl -L https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip -o terraform12.zip && \
     unzip terraform12.zip -d /tmp && \
     mv /tmp/terraform /usr/local/bin/terraform12 && \
     rm -rf terraform12.zip && \
