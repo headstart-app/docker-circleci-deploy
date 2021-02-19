@@ -1,6 +1,6 @@
 FROM node:12.20.0-alpine3.12
 
-RUN apk add --no-cache --update python3 grep make git curl jq wget util-linux zip bash busybox busybox-extras util-linux openssl openssh socat groff less g++ libffi-dev openssl-dev libxml2-dev libxslt-dev ca-certificates && \
+RUN apk add --no-cache --update python2 python3 grep make git curl jq wget util-linux zip bash busybox busybox-extras util-linux openssl openssh socat groff less g++ libffi-dev openssl-dev libxml2-dev libxslt-dev ca-certificates && \
 
     # Python
     apk add --no-cache --update python py-pip python3 python3-dev  && \
