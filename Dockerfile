@@ -36,11 +36,17 @@ RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash b
     mv /tmp/terraform /usr/local/bin/terraform12 && \
     rm -rf terraform12.zip && \
 
-    # TFLint 0.14
-    curl -L https://github.com/terraform-linters/tflint/releases/download/v0.14.0/tflint_linux_amd64.zip -o tflint14.zip && \
-    unzip tflint14.zip -d /tmp && \
-    mv /tmp/tflint /usr/local/bin/tflint14 && \
-    rm -rf tflint14.zip && \
+    # Terraform 13
+    curl -L https://releases.hashicorp.com/terraform/0.13.6/terraform_0.13.6_linux_amd64.zip -o terraform13.zip && \
+    unzip terraform13.zip -d /tmp && \
+    mv /tmp/terraform /usr/local/bin/terraform13 && \
+    rm -rf terraform13.zip && \
+
+    # TFLint 0.19 (compatible with both Terraform 0.12 & 0.13)
+    curl -L https://github.com/terraform-linters/tflint/releases/download/v0.19.0/tflint_linux_amd64.zip -o tflint19.zip && \
+    unzip tflint19.zip -d /tmp && \
+    mv /tmp/tflint /usr/local/bin/tflint19 && \
+    rm -rf tflint19.zip && \
 
     # JSON
     export npm_config_unsafe_perm=true && \
