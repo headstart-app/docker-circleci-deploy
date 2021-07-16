@@ -42,6 +42,12 @@ RUN apk add --no-cache --update grep make git curl jq wget util-linux zip bash b
     mv /tmp/terraform /usr/local/bin/terraform13 && \
     rm -rf terraform13.zip && \
 
+    # Terraform 14
+    curl -L https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip -o terraform14.zip && \
+    unzip terraform14.zip -d /tmp && \
+    mv /tmp/terraform /usr/local/bin/terraform14 && \
+    rm -rf terraform14.zip && \
+
     # TFLint 0.19 (compatible with both Terraform 0.12 & 0.13)
     curl -L https://github.com/terraform-linters/tflint/releases/download/v0.19.0/tflint_linux_amd64.zip -o tflint19.zip && \
     unzip tflint19.zip -d /tmp && \
